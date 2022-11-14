@@ -60,7 +60,7 @@ export default {
       modifiedList: [],
       beerName: "",
       listLength: 20,
-      device: "",
+      device: "Desktop",
     };
   },
   computed: {
