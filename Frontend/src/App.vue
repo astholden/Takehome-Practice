@@ -12,7 +12,19 @@
         <Card :beer="beer" />
       </div>
     </div>
-    <button @click="loadMoreBeers">Load More Beers</button>
+    <div class="ButtonLocation">
+      <button
+        class="Button"
+        v-if="
+          filteredList.length >= 20 &&
+          beers.length > 20 &&
+          filteredList.length !== beers.length
+        "
+        @click="loadMoreBeers"
+      >
+        Load More Beers
+      </button>
+    </div>
   </div>
 </template>
 
@@ -83,5 +95,16 @@ export default {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.Button {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 800;
+  height: 100px;
+  width: 300px;
+}
+.ButtonLocation {
+  display: flex;
+  justify-content: center;
 }
 </style>
