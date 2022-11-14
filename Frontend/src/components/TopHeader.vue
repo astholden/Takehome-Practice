@@ -12,3 +12,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.Header {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 500;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Search">
     <p>{{ this.title }}</p>
     <input
       type="text"
@@ -21,3 +21,17 @@ export default {
   },
 };
 </script>
+
+<style>
+.Search {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+}
+.InputField {
+  width: 50vw;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+}
+</style>

@@ -73,3 +73,8 @@ export default {
   unmounted() {},
 };
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+</style>
