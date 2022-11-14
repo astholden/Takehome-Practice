@@ -7,8 +7,10 @@
       :placeholder="`example: Hazy Jane`"
       :browserPlaceholder="`Type here to filter by name`"
     />
-    <div v-for="beer in filteredList" :key="beer.id">
-      <Card :beer="beer" />
+    <div class="Beers">
+      <div v-for="beer in filteredList" :key="beer.id">
+        <Card :beer="beer" />
+      </div>
     </div>
     <button @click="loadMoreBeers">Load More Beers</button>
   </div>
@@ -77,4 +79,9 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+.Beers {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 </style>
