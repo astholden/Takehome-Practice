@@ -34,7 +34,7 @@ npm run build
     - src/
         - components/
         -- Card.vue
-        -- Header.vue
+        -- TopHeader.vue
         -- Search.vue
     - App.vue
 - Layout should be responsive
