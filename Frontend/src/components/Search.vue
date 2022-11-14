@@ -1,7 +1,7 @@
 <template>
   <div class="Search">
     <div v-if="device !== `Desktop`">
-      <p>{{ this.title }}</p>
+      <a>{{ this.title }}</a>
       <input
         type="text"
         :value="modelValue"

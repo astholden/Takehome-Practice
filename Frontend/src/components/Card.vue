@@ -42,7 +42,7 @@ export default {
 
 <style>
 p {
-  margin: 10px;
+  margin: 7px;
 }
 .Card {
   margin-top: 40px;

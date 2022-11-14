@@ -1,6 +1,8 @@
 <template>
-  <div class="Header">
-    {{ this.header }}
+  <div>
+    <h1 class="Header">
+      {{ this.header }}
+    </h1>
   </div>
 </template>
 
