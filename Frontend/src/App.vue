@@ -10,6 +10,7 @@
     <div v-for="beer in filteredList" :key="beer.id">
       <Card :beer="beer" />
     </div>
+    <button @click="loadMoreBeers">Load More Beers</button>
   </div>
 </template>
 
@@ -43,7 +44,12 @@ export default {
         .slice(0, this.listLength);
     },
   },
-  methods: {},
+  methods: {
+    loadMoreBeers() {
+      if (this.listLength > this.filteredList.length) return;
+      this.listLength += 20;
+    },
+  },
   async created() {
     const response = await fetch("https://api.punkapi.com/v2/beers");
     const data = await response.json();
