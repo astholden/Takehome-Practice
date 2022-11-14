@@ -29,7 +29,7 @@ export default {
       beers: [],
       modifiedList: [],
       beerName: "",
-      listLenght: 20,
+      listLength: 20,
     };
   },
   computed: {
