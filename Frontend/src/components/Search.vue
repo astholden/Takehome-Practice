@@ -47,7 +47,7 @@ export default {
   font-weight: 400;
 }
 .InputFieldMobile {
-  width: 94vw;
+  width: 90vw;
   font-family: "Open Sans";
   font-size: 16px;
   font-weight: 400;

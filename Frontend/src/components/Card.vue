@@ -20,12 +20,18 @@
   <div class="CardMobile" v-else>
     <p class="Name">{{ this.beer.name }}</p>
     <p class="Tagline">{{ this.beer.tagline }}</p>
-    <img class="ImageMobile" :src="this.beer.image_url" />
+    <img
+      class="ImageMobileSpecial"
+      v-if="this.beer.image_url.includes('keg') || this.beer.id === 24"
+      :src="this.beer.image_url"
+    />
+    <img class="ImageMobile" v-else :src="this.beer.image_url" />
     <p class="Description">{{ this.beer.description }}</p>
   </div>
 </template>
 <script>
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "Card",
   props: {
     beer: Object,
@@ -87,6 +93,16 @@ p {
   position: relative;
   left: 40%;
   transform: rotate(90deg);
+  margin-top: -75px;
+  margin-bottom: -75px;
+}
+.ImageMobileSpecial {
+  float: none;
+  height: 200px;
+  position: relative;
+  left: 30%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .Pairing {
   font-family: "Open Sans";
