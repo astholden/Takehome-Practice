@@ -1,9 +1,13 @@
 <template>
   <div class="App">
-    <h1 class="Header">Punk API Beers</h1>
-    <p>Filter beer by name</p>
-    <input type="text" v-model="beerName" placeholder="example: Hazy Jane" />
-    <div v-for="beer in modifiedList" :key="beer.id">
+    <TopHeader :header="`Punk API Beers`" />
+    <Search
+      v-model="beerName"
+      :title="`Filter beer by name`"
+      :placeholder="`example: Hazy Jane`"
+      :browserPlaceholder="`Type here to filter by name`"
+    />
+    <div v-for="beer in filteredList" :key="beer.id">
       <Card :beer="beer" />
     </div>
   </div>
@@ -11,10 +15,14 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import TopHeader from "@/components/TopHeader.vue";
+import Search from "@/components/Search.vue";
 export default {
   name: "App",
   components: {
     Card,
+    TopHeader,
+    Search,
   },
   data() {
     return {
@@ -24,7 +32,17 @@ export default {
       listLenght: 20,
     };
   },
-  computed: {},
+  computed: {
+    filteredList() {
+      return this.modifiedList
+        .filter((beer) => {
+          return beer.name
+            .toLocaleLowerCase()
+            .includes(this.beerName.toLocaleLowerCase());
+        })
+        .slice(0, this.listLength);
+    },
+  },
   methods: {},
   async created() {
     const response = await fetch("https://api.punkapi.com/v2/beers");
