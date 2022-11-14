@@ -45,6 +45,7 @@ export default {
       modifiedList: [],
       beerName: "",
       listLength: 20,
+      device: "",
     };
   },
   computed: {
@@ -62,6 +63,19 @@ export default {
     loadMoreBeers() {
       if (this.listLength > this.filteredList.length) return;
       this.listLength += 20;
+    },
+    screenResize() {
+      let size = window.innerWidth;
+      console.log("size", size);
+      if (size < 481) {
+        this.device = "Phone";
+      }
+      if (size > 480 && size < 1025) {
+        this.device = "Tablet";
+      }
+      if (size > 1024) {
+        this.device = "Desktop";
+      }
     },
   },
   async created() {
@@ -83,8 +97,12 @@ export default {
       this.modifiedList.push(beerObj);
     });
   },
-  mounted() {},
-  unmounted() {},
+  mounted() {
+    window.addEventListener("resize", this.screenResize);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.screenResize);
+  },
 };
 </script>
 
