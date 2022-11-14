@@ -17,6 +17,6 @@ export default {
 .Header {
   font-family: "Montserrat";
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
 }
 </style>

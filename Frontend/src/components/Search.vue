@@ -1,13 +1,24 @@
 <template>
   <div class="Search">
-    <p>{{ this.title }}</p>
-    <input
-      type="text"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      :placeholder="this.placeholder"
-      class="InputField"
-    />
+    <div v-if="device !== `Desktop`">
+      <p>{{ this.title }}</p>
+      <input
+        type="text"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :placeholder="this.placeholder"
+        class="InputFieldMobile"
+      />
+    </div>
+    <div v-else>
+      <input
+        type="text"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :placeholder="this.placeholder"
+        class="InputField"
+      />
+    </div>
   </div>
 </template>
 
@@ -18,6 +29,7 @@ export default {
     modelValue: String,
     title: String,
     placeholder: String,
+    device: String,
   },
 };
 </script>
@@ -30,6 +42,12 @@ export default {
 }
 .InputField {
   width: 50vw;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+}
+.InputFieldMobile {
+  width: 94vw;
   font-family: "Open Sans";
   font-size: 16px;
   font-weight: 400;

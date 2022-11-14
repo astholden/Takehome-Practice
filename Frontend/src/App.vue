@@ -1,15 +1,30 @@
 <template>
   <div class="App">
-    <TopHeader :header="`Punk API Beers`" />
-    <Search
-      v-model="beerName"
-      :title="`Filter beer by name`"
-      :placeholder="`example: Hazy Jane`"
-      :browserPlaceholder="`Type here to filter by name`"
-    />
-    <div class="Beers">
+    <div class="Head" v-if="device === `Desktop`">
+      <TopHeader :header="`Punk API Beers`" />
+      <Search
+        v-model="beerName"
+        :placeholder="`Type here to filter by name`"
+        :device="device"
+      />
+    </div>
+    <div class="HeadMobile" v-else>
+      <TopHeader :header="`Punk API Beers`" />
+      <Search
+        v-model="beerName"
+        :title="`Filter beer by name`"
+        :placeholder="`example: Hazy Jane`"
+        :device="device"
+      />
+    </div>
+    <div class="Beers" v-if="device !== `Phone`">
       <div v-for="beer in filteredList" :key="beer.id">
-        <Card :beer="beer" />
+        <Card :beer="beer" :device="device" />
+      </div>
+    </div>
+    <div class="BeersPhone" v-else>
+      <div v-for="beer in filteredList" :key="beer.id">
+        <Card :beer="beer" :device="device" />
       </div>
     </div>
     <div class="ButtonLocation">
@@ -124,5 +139,18 @@ export default {
 .ButtonLocation {
   display: flex;
   justify-content: center;
+}
+.Head {
+  box-sizing: border-box;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "Header Search";
+}
+.Header {
+  grid-area: Header;
+}
+.Search {
+  grid-area: Search;
 }
 </style>

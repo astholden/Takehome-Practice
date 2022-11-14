@@ -1,5 +1,5 @@
 <template>
-  <div class="Card">
+  <div class="Card" v-if="device === `Desktop`">
     <a class="Description">
       <p class="Name">{{ this.beer.name }}</p>
       <p class="Tagline">{{ this.beer.tagline }}</p>
@@ -17,12 +17,19 @@
     </a>
     <img class="Image" :src="this.beer.image_url" />
   </div>
+  <div class="CardMobile" v-else>
+    <p class="Name">{{ this.beer.name }}</p>
+    <p class="Tagline">{{ this.beer.tagline }}</p>
+    <img class="ImageMobile" :src="this.beer.image_url" />
+    <p class="Description">{{ this.beer.description }}</p>
+  </div>
 </template>
 <script>
 export default {
   name: "Card",
   props: {
     beer: Object,
+    device: String,
   },
 };
 </script>
@@ -39,6 +46,18 @@ p {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: "Image Description";
+}
+.CardMobile {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "Name"
+    "Tagline"
+    "ImageMobile"
+    "Description";
 }
 .Description {
   grid-area: Description;
@@ -61,6 +80,13 @@ p {
 .Image {
   height: 400px;
   grid-area: Image;
+}
+.ImageMobile {
+  float: none;
+  width: 60px;
+  position: relative;
+  left: 40%;
+  transform: rotate(90deg);
 }
 .Pairing {
   font-family: "Open Sans";
