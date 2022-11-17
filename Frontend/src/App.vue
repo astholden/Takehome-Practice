@@ -61,6 +61,7 @@ export default {
       beerName: "",
       listLength: 20,
       device: "Desktop",
+      pageNumber: 1,
     };
   },
   computed: {
@@ -92,12 +93,27 @@ export default {
         this.device = "Desktop";
       }
     },
+    async fetchData() {
+      const response = await fetch(
+        `https://api.punkapi.com/v2/beers?page=${this.pageNumber}&per_page=80`
+      );
+      const data = await response.json();
+      return data;
+    },
+    async beerList() {
+      let data = await this.fetchData();
+      this.beers = data;
+      while (data.length > 0) {
+        this.pageNumber += 1;
+        data = await this.fetchData();
+        this.beers.push(...data);
+      }
+    },
   },
   async created() {
-    const response = await fetch("https://api.punkapi.com/v2/beers");
-    const data = await response.json();
-    this.beers = data;
-    data.forEach((beer) => {
+    this.screenResize();
+    await this.beerList();
+    this.beers.forEach((beer) => {
       let beerObj = {
         id: beer.id,
         name: beer.name,

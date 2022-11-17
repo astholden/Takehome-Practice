@@ -22,7 +22,11 @@
     <p class="Tagline">{{ this.beer.tagline }}</p>
     <img
       class="ImageMobileSpecial"
-      v-if="this.beer.image_url.includes('keg') || this.beer.id === 24"
+      v-if="
+        this.beer.image_url.includes('keg') ||
+        this.beer.id === 24 ||
+        this.beer.image_url.includes('cask')
+      "
       :src="this.beer.image_url"
     />
     <img class="ImageMobile" v-else :src="this.beer.image_url" />
