@@ -1,4 +1,4 @@
-# Tagboard Frontend Takehome
+# Frontend Takehome
 
 ## Recommended IDE Setup
 
